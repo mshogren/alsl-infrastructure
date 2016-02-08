@@ -2,24 +2,64 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Action": "ec2:*",
+            "Sid": "AllowDescribeOnEverything",
             "Effect": "Allow",
-            "Resource": "*"
+            "Action": [
+                "ec2:Describe*"
+            ],
+            "Resource": [
+                "*"
+            ]
         },
         {
+            "Sid": "AllowChangingRulesOnSecurityGroup",
             "Effect": "Allow",
-            "Action": "elasticloadbalancing:*",
-            "Resource": "*"
+            "Action": [
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "ec2:ResourceTag/policy-tag": "alsl-ec2-dev"
+                }
+            }
         },
         {
+            "Sid": "AllowRestrictedRunInstances",
             "Effect": "Allow",
-            "Action": "cloudwatch:*",
-            "Resource": "*"
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:<region>:<accountid>:key-pair/*",
+                "arn:aws:ec2:<region>:<accountid>:volume/*",
+                "arn:aws:ec2:<region>:<accountid>:network-interface/*",
+                "arn:aws:ec2:<region>:<accountid>:vpc/*",
+                "arn:aws:ec2:<region>:<accountid>:subnet/*",
+                "arn:aws:ec2:<region>::image/ami-9abea4fb"
+            ]
         },
         {
+            "Sid": "AllowRestrictedRunInstances2",
             "Effect": "Allow",
-            "Action": "autoscaling:*",
-            "Resource": "*"
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:<region>:<accountid>:instance/*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "ec2:InstanceType": [
+                        "t2.micro",
+                        "t2.small"
+                    ]
+                }
+            }
         }
     ]
 }
