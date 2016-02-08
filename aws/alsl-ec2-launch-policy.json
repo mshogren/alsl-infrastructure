@@ -60,6 +60,14 @@
                     ]
                 }
             }
+        },
+        {
+            "Sid": "AllowPassIamRole",
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::<accountid>:role/alsl-ec2-dev"
         }
     ]
 }
