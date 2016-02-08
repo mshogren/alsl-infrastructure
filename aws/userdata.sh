@@ -18,4 +18,4 @@ apt-get update && apt-get upgrade -y
 apt_get_install git ansible 
 
 # Run ansible
-ansible-pull -i "localhost," -d /home/ubuntu/alsl-infrastructure -U https://github.com/mshogren/alsl-infrastructure alsl-ec2-dev.yml
+ansible-pull -i "localhost," -d /home/ubuntu/alsl-infrastructure -U https://github.com/mshogren/alsl-infrastructure aws/alsl-ec2-dev.yml
