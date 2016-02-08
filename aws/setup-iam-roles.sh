@@ -3,7 +3,7 @@
 region=$(aws configure get region);
 userArn=$(aws iam get-user --query User.Arn);
 baseArn=${userArn:1:26};
-accountId=${userArn:14:10};
+accountId=${userArn:14:12};
 
 sed -e s/\<region\>/$region/g -e s/\<accountid\>/$accountId/g alsl-ec2-launch-policy.json > tmp.json
 
