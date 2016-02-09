@@ -1,3 +1,4 @@
+---
 tasks:
   - apt: name=python-pip state=present
     sudo: yes
