@@ -1,6 +1,6 @@
 --- 
 - hosts: all 
-  tasks: 
-  - apt: name=awscli state=present
-    sudo: yes
-  - shell: region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | awk -F\" '/region/ {print $4}'); aws configure set region $region
+  remote_user: ubuntu
+  include: ../ansible/devenv.yml
+  roles: 
+  - awscli
