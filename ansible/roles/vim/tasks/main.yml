@@ -1,0 +1,4 @@
+---
+- apt: name=vim-nox state=present
+  sudo: yes
+

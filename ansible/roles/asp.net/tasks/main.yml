@@ -1,0 +1,16 @@
+---
+- apt: name={{ item }} state=present
+  with_items:
+  - curl
+  - unzip
+  - libunwind8
+  - gettext
+  - libssl-dev
+  - libcurl4-openssl-dev
+  - zlib1g
+  - libicu-dev
+  - uuid-dev
+  sudo: yes
+- shell: curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh && dnvm upgrade -r coreclr
+  args:
+    executable: /bin/bash

@@ -1,0 +1,27 @@
+---
+- apt: name={{ item }} state=present
+  with_items:
+  - make
+  - automake
+  - libtool
+  - curl
+  sudo: yes
+- shell: curl -sSL https://github.com/libuv/libuv/archive/v1.8.0.tar.gz | sudo tar zxfv - -C /usr/local/src
+  args:
+    executable: /bin/bash
+- shell: "{{ item }}"
+  with_items:
+  - sh autogen.sh
+  - ./configure
+  - make
+  - make install
+  - ldconfig
+  args:
+    executable: /bin/bash
+    chdir: /usr/local/src/libuv-1.8.0
+  sudo: yes
+- shell: rm -rf /usr/local/src/libuv-1.8.0
+  args:
+    executable: /bin/bash
+  sudo: yes
+

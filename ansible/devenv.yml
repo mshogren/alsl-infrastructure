@@ -2,3 +2,6 @@
 - hosts: all
   roles: 
   - awscli
+  - vim
+  - nodejs
+  - asp.net
