@@ -1,4 +1,5 @@
 #!/bin/bash -ex
+# Based on http://blog.xi-group.com/2014/07/small-tip-how-to-use-aws-cli-to-start-spot-instances-with-userdata/
 
 # Debian apt-get install function
 apt_get_install()
