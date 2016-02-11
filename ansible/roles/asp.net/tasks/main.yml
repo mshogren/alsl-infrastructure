@@ -1,4 +1,5 @@
 ---
+# Steps based on http://docs.asp.net/en/latest/getting-started/installing-on-linux.html#installing-on-ubuntu-14-04
 - apt: name={{ item }} state=present
   with_items:
   - curl
