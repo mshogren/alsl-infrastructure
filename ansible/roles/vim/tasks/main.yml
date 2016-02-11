@@ -1,4 +1,9 @@
 ---
 - apt: name=vim-nox state=present
   sudo: yes
+- git: repo=http://github.com/mshogren/dotvim.git dest=~/.vim
+- file: state=link src=~/.vim/vimrc path=~/.vimrc
+- shell: git submodule init && git submodule update
+  args: 
+    chdir: ~/.vim
 

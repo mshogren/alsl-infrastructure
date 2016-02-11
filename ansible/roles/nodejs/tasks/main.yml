@@ -1,4 +1,13 @@
 ---
-- apt: name=nodejs-legacy state=present
+- apt: name={{ item }} state=present
+  with_items:
+  - build-essential
+  - libssl-dev
   sudo: yes
+- shell: "{{ item }}"
+  with_items:
+  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+  - source ~/.nvm/nvm.sh && nvm install node
+  args:
+    executable: /bin/bash
 
