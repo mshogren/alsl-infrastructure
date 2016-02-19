@@ -17,6 +17,7 @@ rm tmp.json
 
 aws iam create-role --role-name alsl-ec2-dev --assume-role-policy-document file://ec2-assume-role-policy.json
 aws iam attach-role-policy --role-name alsl-ec2-dev --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+aws iam attach-role-policy --role-name alsl-ec2-dev --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
 aws iam create-instance-profile --instance-profile-name alsl-ec2-dev
 aws iam add-role-to-instance-profile --instance-profile-name alsl-ec2-dev --role-name alsl-ec2-dev
 
