@@ -7,3 +7,5 @@
   - jstools
   - mongodb
   - asp.net
+  - xvfb
+  - chrome
