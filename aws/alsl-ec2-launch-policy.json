@@ -40,7 +40,7 @@
                 "arn:aws:ec2:<region>:<accountid>:network-interface/*",
                 "arn:aws:ec2:<region>:<accountid>:vpc/*",
                 "arn:aws:ec2:<region>:<accountid>:subnet/*",
-                "arn:aws:ec2:<region>::image/ami-9abea4fb"
+                "arn:aws:ec2:<region>::image/ami-c37290a3"
             ]
         },
         {
