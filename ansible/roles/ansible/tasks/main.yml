@@ -1,5 +1,0 @@
----
-- apt_repository: repo='deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse' state=present
-  sudo: yes
-- apt: name=ansible default-release=trusty-backports state=present
-  sudo: yes
