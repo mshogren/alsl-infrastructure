@@ -1,17 +1,8 @@
 ---
-# Steps based on http://docs.asp.net/en/latest/getting-started/installing-on-linux.html#installing-on-ubuntu-14-04
-- apt: name={{ item }} state=present
-  with_items:
-  - curl
-  - unzip
-  - libunwind8
-  - gettext
-  - libssl-dev
-  - libcurl4-openssl-dev
-  - zlib1g
-  - libicu-dev
-  - uuid-dev
+# Steps based on https://www.microsoft.com/net/core#ubuntu
+- apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893 state=present
   sudo: yes
-- shell: curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh && dnvm upgrade -r coreclr
-  args:
-    executable: /bin/bash
+- apt_repository: repo='deb https://apt-mo.trafficmanager.net/repos/dotnet xenial main' state=present
+  sudo: yes
+- apt: name=dotnet-dev-1.0.0-preview2-003104 state=present
+  sudo: yes
