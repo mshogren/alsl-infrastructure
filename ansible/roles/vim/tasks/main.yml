@@ -1,5 +1,5 @@
 ---
-- apt: name=vim-nox state=present
+- apt: name=vim-nox-py2 state=present
   sudo: yes
 - git: repo=http://github.com/mshogren/dotvim.git dest=~/.vim
 - file: state=link src=~/.vim/vimrc path=~/.vimrc
