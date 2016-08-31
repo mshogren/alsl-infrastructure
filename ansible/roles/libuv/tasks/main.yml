@@ -6,7 +6,7 @@
   - automake
   - libtool
   - curl
-  sudo: yes
+  become: yes
 - shell: curl -sSL https://github.com/libuv/libuv/archive/v1.8.0.tar.gz | sudo tar zxfv - -C /usr/local/src
   args:
     executable: /bin/bash
@@ -20,9 +20,9 @@
   args:
     executable: /bin/bash
     chdir: /usr/local/src/libuv-1.8.0
-  sudo: yes
+  become: yes
 - shell: rm -rf /usr/local/src/libuv-1.8.0
   args:
     executable: /bin/bash
-  sudo: yes
+  become: yes
 
