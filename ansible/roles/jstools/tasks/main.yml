@@ -3,13 +3,13 @@
   register: npm_path 
   args: 
     executable: /bin/bash
-- npm: name={{ item }} global=yes state=present executable={{npm_path}}
+- npm: name={{ item }} global=yes state=present executable={{npm_path.cmd.stdout_lines[0]}}
   with_items:
   - yo
   - bower
   - grunt-cli
   - gulp
   - jshint
-- npm: name=generator-angular-fullstack version=2.1.1 global=yes state=present executable={{npm_path}}
+- npm: name=generator-angular-fullstack version=2.1.1 global=yes state=present executable={{npm_path.cmd.stdout_lines[0]}}
 
 
