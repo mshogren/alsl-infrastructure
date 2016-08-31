@@ -13,6 +13,9 @@ apt_get_install()
 # Some initial setup
 set -e -x
 export DEBIAN_FRONTEND=noninteractive
+
+sudo apt-add-repository ppa:ansible/ansible
+
 apt-get update && apt-get upgrade -y
          
 # Install required packages

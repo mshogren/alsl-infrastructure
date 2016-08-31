@@ -1,11 +1,15 @@
 ---
-- npm: name={{ item }} global=yes state=present
+- shell: source ~/.nvm/nvm.sh && which npm
+  register: npm_path 
+  args: 
+    executable: /bin/bash
+- npm: name={{ item }} global=yes state=present executable={{npm_path}}
   with_items:
   - yo
   - bower
   - grunt-cli
   - gulp
   - jshint
-- npm: name=generator-angular-fullstack version=2.1.1 global=yes state=present
+- npm: name=generator-angular-fullstack version=2.1.1 global=yes state=present executable={{npm_path}}
 
 
