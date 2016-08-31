@@ -6,6 +6,7 @@
   - nodejs
   - jstools
   - mongodb
-  - asp.net
+  - netcore
+  - mono
   - xvfb
   - chrome
