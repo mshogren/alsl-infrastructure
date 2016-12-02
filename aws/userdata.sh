@@ -21,5 +21,8 @@ apt-get update && apt-get upgrade -y
 # Install required packages
 apt_get_install git ansible 
 
+# Install nvm
+su - ubuntu -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.6/install.sh | PROFILE=~/.profile bash"
+
 # Run ansible
 su - ubuntu -c "ansible-pull -i \"localhost,\" -d /home/ubuntu/alsl-infrastructure -U https://github.com/mshogren/alsl-infrastructure aws/alsl-ec2-dev.yml"

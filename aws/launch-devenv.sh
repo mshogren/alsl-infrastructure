@@ -12,4 +12,10 @@ rm tmp.json
 
 aws ec2 authorize-security-group-ingress --group-name alsl-ec2-dev-sg --protocol tcp --port 22 --cidr $IP/32
 
-aws ec2 run-instances --image-id ami-d06a90b0 --key-name $USER --security-groups alsl-ec2-dev-sg --instance-type t2.micro  --iam-instance-profile Name=alsl-ec2-dev --user-data file://userdata.sh
+aws ec2 describe-images --image-id ami-8936e0e9 --query 'Images[0].BlockDeviceMappings' > mapping.json
+
+sed -i s/8,/16,/ mapping.json
+
+aws ec2 run-instances --image-id ami-8936e0e9 --key-name $USER --security-groups alsl-ec2-dev-sg --instance-type t2.micro --block-device-mappings file://mapping.json --iam-instance-profile Name=alsl-ec2-dev --user-data file://userdata.sh
+
+rm mapping.json
