@@ -1,8 +1,0 @@
----
-# Steps based on https://www.microsoft.com/net/core#ubuntu
-- apt_key: keyserver=apt-mo.trafficmanager.net id=417A0893 state=present
-  become: yes
-- apt_repository: repo='deb https://apt-mo.trafficmanager.net/repos/dotnet xenial main' state=present
-  become: yes
-- apt: name=dotnet-dev-1.0.0-preview2-003104 state=present
-  become: yes

@@ -1,5 +1,0 @@
----
-- apt: name=xvfb state=present
-  become: yes
-
-

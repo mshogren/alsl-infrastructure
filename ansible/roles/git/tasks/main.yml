@@ -1,6 +1,6 @@
 ---
 - apt: name=git state=present
   become: yes
-- shell: git config --global credential.helper 'cache --timeout=28800'
+- shell: git config --global credential.helper 'cache --timeout=604800'
 
 

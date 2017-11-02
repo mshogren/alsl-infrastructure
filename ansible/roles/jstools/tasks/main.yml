@@ -5,14 +5,10 @@
     executable: /bin/bash
 - npm: name={{ item }} global=yes state=present executable="{{node_path.stdout}}/npm"
   with_items:
-  - yo
-  - bower
-  - grunt-cli
-  - gulp
-  - jshint
-  environment:
-    PATH: "{{ ansible_env.PATH }}:{{node_path.stdout}}"
-- npm: name=generator-angular-fullstack version=2.1.1 global=yes state=present executable="{{node_path.stdout}}/npm"
+  - node-check-updates
+  - pm2
+  - commitizen
+  - resin-cli
   environment:
     PATH: "{{ ansible_env.PATH }}:{{node_path.stdout}}"
 

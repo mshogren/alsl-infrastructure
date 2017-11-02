@@ -1,8 +1,0 @@
----
-# Steps based on https://www.microsoft.com/net/core#ubuntu
-- apt_key: keyserver=keyserver.ubuntu.com id=3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF state=present
-  become: yes
-- apt_repository: repo='deb http://download.mono-project.com/repo/debian wheezy main' state=present
-  become: yes
-- apt: name=mono-complete state=present
-  become: yes
