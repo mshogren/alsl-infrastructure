@@ -5,3 +5,10 @@
   - vim
   - nodejs
   - jstools
+  - xrdp
+  - chrome
+  - dotnet
+  - vscode
+  post_tasks:
+  - import_role:
+  name: uiuser

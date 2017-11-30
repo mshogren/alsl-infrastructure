@@ -1,0 +1,6 @@
+---
+- shell: adduser mike --disabled-login
+  args:
+    executable: /bin/bash
+  become: yes
+

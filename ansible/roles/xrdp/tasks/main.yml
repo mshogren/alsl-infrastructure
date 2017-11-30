@@ -1,0 +1,10 @@
+---
+- apt: name={{ item }} state=present
+  with_items:
+  - xfce4 
+  - xfce4-terminal
+  - fonts-inconsolata
+  - fonts-powerline
+  - xrdp
+  become: yes
+

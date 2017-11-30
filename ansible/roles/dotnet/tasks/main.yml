@@ -1,0 +1,9 @@
+---
+- apt_key: url=https://packages.microsoft.com/keys/microsoft.asc state=present
+  become: yes
+- apt_repository: repo='https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main' filename='dotnet' state=present
+  become: yes
+- apt: name=dotnet-sdk-2.0.2 state=present
+  become: yes
+
+

@@ -1,7 +1,7 @@
 ---
 - apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
   become: yes
-- apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present
+- apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' filename='google-chrome' state=present
   become: yes
 - apt: name=google-chrome-stable state=present
   become: yes
