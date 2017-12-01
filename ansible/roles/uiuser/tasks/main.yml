@@ -1,6 +1,13 @@
 ---
-- shell: adduser mike --disabled-login
+- shell: "{{ item }}"
+    with_items:
+    - adduser mike --disabled-login
+    - adduser mike sudo
+    - adduser mike ubuntu
   args:
     executable: /bin/bash
   become: yes
-
+#Todo: setup google authenticator
+#Todo: set xfce4-terminal settings
+#Todo: set xfwm settings
+#Todo: install vscode extensions
