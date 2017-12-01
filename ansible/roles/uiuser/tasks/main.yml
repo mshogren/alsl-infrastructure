@@ -1,9 +1,9 @@
 ---
 - shell: "{{ item }}"
-    with_items:
-    - adduser mike --disabled-login
-    - adduser mike sudo
-    - adduser mike ubuntu
+  with_items:
+  - id -u uiuser; if [ $? -ne 0 ]; then adduser uiuser --disabled-login; fi
+  - adduser uiuser sudo
+  - adduser uiuser ubuntu
   args:
     executable: /bin/bash
   become: yes

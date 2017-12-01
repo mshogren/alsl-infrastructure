@@ -2,5 +2,8 @@
 - apt: name=vim-nox state=present
   become: yes
 - git: repo=http://github.com/mshogren/dotvim.git dest=~/.vim
-- copy: src=/home/ubuntu/.vim dest=/etc/skel/
+- file: path=/etc/skel/.vim state=directory
+  become: yes
+- copy: src=/home/ubuntu/.vim/vimrc dest=/etc/skel/.vim/vimrc
+  become: yes
 
