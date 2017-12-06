@@ -12,6 +12,16 @@
             ]
         },
         {
+            "Sid": "AllowRequestSpotInstances",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RequestSpotInstances"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
             "Sid": "AllowChangingRulesOnSecurityGroup",
             "Effect": "Allow",
             "Action": [

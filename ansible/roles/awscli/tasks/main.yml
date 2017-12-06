@@ -6,4 +6,12 @@
 - pip: name=awscli state=present
   become: yes
 - shell: region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | awk -F\" '/region/ {print $4}'); aws configure set region $region
-
+- blockinfile:
+    path: ~/.bashrc
+    block: |
+      complete -C '/usr/local/bin/aws_completer' aws
+- blockinfile:
+    path: /etc/skel/.bashrc
+    block: |
+      complete -C '/usr/local/bin/aws_completer' aws
+  become: yes
