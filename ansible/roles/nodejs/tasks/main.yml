@@ -13,13 +13,13 @@
 - blockinfile:
     path: /etc/skel/.profile
     block: |
-      export NVM_DIR="/home/ubuntu/.nvm"
+      export NVM_DIR="~/.nvm"
       [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
   become: yes
 - blockinfile:
     path: /etc/skel/.bashrc
     block: |
-      export NVM_DIR="/home/ubuntu/.nvm"
+      export NVM_DIR="~/.nvm"
       [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
       [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   become: yes
