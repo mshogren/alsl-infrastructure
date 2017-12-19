@@ -1,0 +1,9 @@
+---
+- apt_key: url=https://packages.microsoft.com/keys/microsoft.asc state=present
+  become: yes
+- apt_repository: repo='deb https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017 xenial main' filename='mssql' state=present
+  become: yes
+- apt: name=mssql-server state=present
+  become: yes
+
+
