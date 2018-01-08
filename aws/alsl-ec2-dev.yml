@@ -1,3 +1,3 @@
 ---
 - remote_user: ubuntu
-  import-playbook: ../ansible/devenv.yml
+- import-playbook: ../ansible/devenv.yml
