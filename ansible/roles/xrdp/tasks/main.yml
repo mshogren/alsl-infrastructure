@@ -8,4 +8,5 @@
   - fonts-powerline
   - xrdp
   become: yes
-
+- alternatives: name=x-session-manager path=/usr/bin/startlxde
+  become: yes
