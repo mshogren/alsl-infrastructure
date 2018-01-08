@@ -1,0 +1,11 @@
+---
+- apt: name=inadyn state=present
+  become: yes
+- lineinfile: path=/etc/inadyn.conf regexp={{ item.regexp }} line={{ item.line }}
+  with_items:
+    - { regexp: '^system', line: 'system default@dnsexit.com' }
+  become: yes
+- lineinfile: path=/etc/default/inadyn regexp='^RUN_DAEMON=' line='RUN_DAEMON="yes"'
+  become: yes
+- service: name=inadyn state=restarted
+  become: yes

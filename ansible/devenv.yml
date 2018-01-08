@@ -1,7 +1,8 @@
 ---
 - hosts: all
-  roles: 
+  roles:
   - awscli
+  - inadyn
   - vim
   - nodejs
   - jstools
