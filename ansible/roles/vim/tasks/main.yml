@@ -4,7 +4,10 @@
 - shell: update-alternatives --set editor /usr/bin/vim.nox
   become: yes
 - git: repo=http://github.com/mshogren/dotvim.git dest=~/.vim
+- file: path=~/.vim/undo state=directory
 - file: path=/etc/skel/.vim state=directory
+  become: yes
+- file: path=/etc/skel/.vim/undo state=directory
   become: yes
 - copy: src=~/.vim/vimrc dest=/etc/skel/.vim/vimrc
   become: yes
