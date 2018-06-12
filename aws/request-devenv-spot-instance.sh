@@ -21,7 +21,7 @@ aws ec2 authorize-security-group-ingress --group-name alsl-ec2-dev-sg --protocol
 USERDATA=$(base64 userdata.sh -w 0)
 QUERY="Images[0].{ImageId: ImageId, InstanceType: \`\"m3.medium\"\`, KeyName: \`\"${USER}\"\`, SecurityGroups: [ \`\"alsl-ec2-dev-sg\"\` ], IamInstanceProfile: { Name: \`\"alsl-ec2-dev\"\` }, UserData: \`\"${USERDATA}\"\`, BlockDeviceMappings: BlockDeviceMappings[*] }"
 
-aws ec2 describe-images --image-id ami-790ec601 --query "$QUERY" > launch.json
+aws ec2 describe-images --image-id ami-d27709aa --query "$QUERY" > launch.json
 
 sed -i 's/8,/16,/' launch.json
 sed -i '/"Encrypted": false,/d' launch.json
