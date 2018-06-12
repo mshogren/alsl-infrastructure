@@ -13,7 +13,7 @@ apt_get_install()
                     -o DPkg::Options::=--force-confold \
                     install $@
 }
-         
+
 # Some initial setup
 set -e -x
 export DEBIAN_FRONTEND=noninteractive
@@ -21,12 +21,12 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-add-repository ppa:ansible/ansible
 
 apt-get update && apt-get upgrade -y
-         
+
 # Install required packages
-apt_get_install git ansible 
+apt_get_install git ansible
 
 # Install nvm
-su - ubuntu -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.6/install.sh | PROFILE=~/.profile bash"
+su - ubuntu -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | PROFILE=~/.profile bash"
 
 # Run ansible
-su - ubuntu -c "ansible-pull -i \"localhost,\" -d /home/ubuntu/alsl-infrastructure -U https://github.com/mshogren/alsl-infrastructure aws/alsl-ec2-dev.yml"
+su - ubuntu -c "ansible-pull -i /home/ubuntu/alsl-infrastructure/aws/hosts.yml -d /home/ubuntu/alsl-infrastructure -U git@github.com:mshogren/alsl-infrastructure.git aws/alsl-ec2-dev.yml"
