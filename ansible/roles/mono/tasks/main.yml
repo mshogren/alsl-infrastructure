@@ -1,0 +1,9 @@
+---
+- apt_key: keyserver=keyserver.ubuntu.com id=3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF state=present
+  become: yes
+- apt_repository: repo='deb https://download.mono-project.com/repo/ubuntu stable-bionic main' filename='mono-official-stable' state=present
+  become: yes
+- apt: name=mono-complete state=present
+  become: yes
+
+

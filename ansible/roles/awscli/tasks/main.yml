@@ -1,9 +1,9 @@
 ---
-- apt: name=python-pip state=present
+- apt: name=python-pip3 state=present
   become: yes
-- pip: name=setuptools state=present
+- pip: name=setuptools executable=pip3 state=present
   become: yes
-- pip: name=awscli state=present
+- pip: name=awscli executable=pip3 state=present
   become: yes
 - shell: region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | awk -F\" '/region/ {print $4}'); aws configure set region $region
 - file: state=link src=/usr/local/bin/aws_bash_completer path=/etc/bash_completion.d/aws

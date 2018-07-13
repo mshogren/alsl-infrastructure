@@ -1,5 +1,0 @@
----
-- apt_repository: repo='ppa:ansible/ansible' state=present
-  become: yes
-- apt: name=ansible state=latest
-  become: yes
