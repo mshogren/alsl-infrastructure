@@ -17,7 +17,10 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update && apt-get upgrade -y
 
 # Install required packages
-apt_get_install git ansible
+apt_get_install git python3-pip
+
+# Install ansible
+pip3 install ansible
 
 # Install nvm
 su - ubuntu -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | PROFILE=~/.profile bash"

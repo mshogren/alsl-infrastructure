@@ -10,6 +10,7 @@
   - chrome
   - dotnet
   - vscode
+  - docker
   post_tasks:
   - import_role:
       name: uiuser
