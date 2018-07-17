@@ -26,4 +26,4 @@ pip3 install ansible
 su - ubuntu -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | PROFILE=~/.profile bash"
 
 # Run ansible
-su - ubuntu -c "ansible-pull -i /home/ubuntu/alsl-infrastructure/aws/hosts.yml -d /home/ubuntu/alsl-infrastructure -U https://github.com/mshogren/alsl-infrastructure.git aws/alsl-ec2-dev.yml"
+su - ubuntu -c "ansible-pull -e 'ansible_python_interpreter=/usr/bin/python3' -i /home/ubuntu/alsl-infrastructure/aws/hosts.yml -d /home/ubuntu/alsl-infrastructure -U https://github.com/mshogren/alsl-infrastructure.git aws/alsl-ec2-dev.yml"
