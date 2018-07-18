@@ -1,0 +1,6 @@
+---
+- name: restart inadyn
+  service:
+    name: inadyn
+    state: restarted
+  become: true

@@ -1,0 +1,8 @@
+---
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r ansible/requirements.txt
+script:
+  - cd ansible; find . -type d -name 'molecule' | sed -r 's|/[^/]+$||' | xargs -I % bash -c 'cd %; molecule test'

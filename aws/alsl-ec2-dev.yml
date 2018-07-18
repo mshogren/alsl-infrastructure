@@ -1,3 +1,8 @@
 ---
+- vars:
+  system: 'system@example.com'
+  username: 'username@example.com'
+  password: 'P@ssw0rd'
+  alias: 'alias.example.com'
 - remote_user: ubuntu
-  include: ../ansible/devenv.yml
+- import_playbook: ../ansible/devenv.yml
