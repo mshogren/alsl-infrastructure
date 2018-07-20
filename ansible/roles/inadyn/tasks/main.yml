@@ -5,10 +5,10 @@
 - name: update the configuration
   lineinfile: path=/etc/inadyn.conf regexp={{ item.regexp }} line={{ item.line }}
   with_items:
-    - { regexp: '^system', line: 'system {{ system }}' }
-    - { regexp: '^username', line: 'username {{ username }}' }
-    - { regexp: '^password', line: 'password {{ password }}' }
-    - { regexp: '^alias', line: 'alias {{ alias }}' }
+    - { regexp: '^system', line: 'system {{ inadyn_system }}' }
+    - { regexp: '^username', line: 'username {{ inadyn_username }}' }
+    - { regexp: '^password', line: 'password {{ inadyn_password }}' }
+    - { regexp: '^alias', line: 'alias {{ inadyn_alias }}' }
   become: true
   notify:
     - restart inadyn
