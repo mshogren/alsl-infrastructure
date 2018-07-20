@@ -1,5 +1,6 @@
 ---
-- vars:
-  inadyn: "{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/inadyn', bypath=True, recursive=True, decrypt=True) }}"
-- remote_user: ubuntu
+- hosts: localhost
+  tasks:
+    - set_fact: inadyn="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/inadyn', shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
 - import_playbook: ../ansible/devenv.yml
+- remote_user: ubuntu
