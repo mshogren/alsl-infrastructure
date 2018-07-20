@@ -4,7 +4,8 @@
   roles:
     - role: inadyn
       vars:
-        inadyn_system: 'system@example.com'
-        inadyn_username: 'username@example.com'
-        inadyn_password: 'P@ssw0rd'
-        inadyn_alias: 'alias.example.com'
+        inadyn:
+          system: 'system@example.com'
+          username: 'username@example.com'
+          password: 'P@ssw0rd'
+          alias: 'alias.example.com'
