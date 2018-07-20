@@ -20,7 +20,7 @@ apt-get update && apt-get upgrade -y
 apt_get_install git python3-pip
 
 # Install ansible
-pip3 install ansible
+pip3 install ansible boto3
 
 # Install nvm
 su - ubuntu -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | PROFILE=~/.profile bash"
