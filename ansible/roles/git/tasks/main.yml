@@ -1,6 +1,6 @@
 ---
-- apt: name=git state=present
-  become: yes
-- shell: git config --global credential.helper 'cache --timeout=604800'
-
-
+- name: install the package
+  apt: name=git state=present
+  become: true
+- name: configure git
+  git_config: name='credential.helper' scope=global value='cache --timeout=604800'

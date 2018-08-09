@@ -1,19 +1,19 @@
 ---
 - apt: name=vim-nox state=present
-  become: yes
+  become: true
 - shell: update-alternatives --set editor /usr/bin/vim.nox
-  become: yes
+  become: true
 - git: repo=http://github.com/mshogren/dotvim.git dest=~/.vim
 - file: path=~/.vim/undo state=directory
 - file: path=/etc/skel/.vim state=directory
-  become: yes
+  become: true
 - file: path=/etc/skel/.vim/undo state=directory
-  become: yes
+  become: true
 - copy: src=~/.vim/vimrc dest=/etc/skel/.vim/vimrc
-  become: yes
+  become: true
 - blockinfile:
     path: ~/.editorconfig
-    create: yes
+    create: true
     block: |
       root = true
 
@@ -25,5 +25,4 @@
       trim_trailing_whitespace = true
       insert_final_newline = true
 - copy: src=~/.editorconfig dest=/etc/skel/.editorconfig
-  become: yes
-
+  become: true
