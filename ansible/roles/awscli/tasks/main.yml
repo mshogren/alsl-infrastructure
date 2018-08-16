@@ -6,7 +6,12 @@
   pip: name='setuptools awscli' executable=pip3 state=present
   become: true
 - name: set the aws region
-  shell: region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | awk -F\" '/region/ {print $4}'); aws configure set region $region
+  shell: aws configure get region | grep -q {{ awsregion }} && echo -n SET || aws configure set region {{ awsregion }}
+  register: region_state
+  changed_when: region_state.stdout != 'SET'
+- name: ensure bash completion dir exists
+  file: state=directory path=/etc/bash_completion.d
+  become: true
 - name: install bash completion
   file: state=link src=/usr/local/bin/aws_bash_completer path=/etc/bash_completion.d/aws
   become: true

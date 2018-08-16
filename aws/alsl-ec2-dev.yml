@@ -2,5 +2,10 @@
 - hosts: localhost
   remote_user: ubuntu
   tasks:
+    - uri:
+        url: http://169.254.169.254/latest/dynamic/instance-identity/document
+        return_content: true
+      register: content
+    - set_fact: awsregion="{{ content.json.region }}"
     - set_fact: inadyn="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/inadyn', shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
 - import_playbook: ../ansible/devenv.yml
