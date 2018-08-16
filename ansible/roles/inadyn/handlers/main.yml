@@ -3,4 +3,5 @@
   service:
     name: inadyn
     state: restarted
+    enabled: true
   become: true
