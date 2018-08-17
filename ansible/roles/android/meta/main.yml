@@ -1,4 +1,3 @@
 ---
 dependencies:
-- { role: openjdk7 }
-
+  - {role: openjdk7}

@@ -1,17 +1,30 @@
 ---
 - name: install pip
-  apt: name=python3-pip state=present
+  apt:
+    name:
+      - python3-pip
+    state: present
   become: true
 - name: install packages
-  pip: name='setuptools awscli' executable=pip3 state=present
+  pip:
+    name:
+      - setuptools
+      - awscli
+    executable: pip3
+    state: present
   become: true
 - name: set the aws region
   shell: aws configure get region | grep -q {{ awsregion }} && echo -n SET || aws configure set region {{ awsregion }}
   register: region_state
   changed_when: region_state.stdout != 'SET'
 - name: ensure bash completion dir exists
-  file: state=directory path=/etc/bash_completion.d
+  file:
+    state: directory
+    path: /etc/bash_completion.d
   become: true
 - name: install bash completion
-  file: state=link src=/usr/local/bin/aws_bash_completer path=/etc/bash_completion.d/aws
+  file:
+    state: link
+    src: /usr/local/bin/aws_bash_completer
+    path: /etc/bash_completion.d/aws
   become: true

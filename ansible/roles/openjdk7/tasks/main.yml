@@ -1,7 +1,11 @@
 ---
-- apt_repository: repo='ppa:openjdk-r/ppa' state=present
-  become: yes
-- apt: name=openjdk-7-jdk state=present
-  become: yes
-
-
+- name: install openjdk repository
+  apt_repository:
+    repo: 'ppa:openjdk-r/ppa'
+    state: present
+  become: true
+- name: install openjdk package
+  apt:
+    name: openjdk-7-jdk
+    state: present
+  become: true

@@ -2,29 +2,28 @@
 - shell: dpkg --add-architecture i386
   args:
     executable: /bin/bash
-  become: yes
+  become: true
 - apt: name={{ item }} state=present
   with_items:
-  - libc6:i386 
-  - libncurses5:i386 
-  - libstdc++6:i386 
-  - lib32z1 
-  - libbz2-1.0:i386
-  - zlib1g:i386
-  - zlibc
-  - imagemagick
-  - expect
-  - ant
-  - ccache
-  - autoconf
-  - automake
-  - python-dev
-  - zlibc
-  become: yes
-- file
-  path: {{ ansible_env.HOME }}/android-sdk-linux
+    - libc6:i386
+    - libncurses5:i386
+    - libstdc++6:i386
+    - lib32z1
+    - libbz2-1.0:i386
+    - zlib1g:i386
+    - zlibc
+    - imagemagick
+    - expect
+    - ant
+    - ccache
+    - autoconf
+    - automake
+    - python-dev
+    - zlibc
+  become: true
+- file:
+    path: "{{ansible_env.HOME}}/android-sdk-linux"
 - lineinfile
-- get_url
-  url: http://dl.google.com/android/repository/tools_r25.3.2-linux.zip
+- get_url:
+    url: http://dl.google.com/android/repository/tools_r25.3.2-linux.zip
 - unarchive
-

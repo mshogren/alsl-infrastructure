@@ -1,9 +1,17 @@
 ---
-- apt_key: url=https://packages.microsoft.com/keys/microsoft.asc state=present
-  become: yes
-- apt_repository: repo='deb https://packages.microsoft.com/ubuntu/18.04/prod bionic main' filename='dotnet' state=present
-  become: yes
-- apt: name=dotnet-sdk-2.1 state=present
-  become: yes
-
-
+- name: import repository key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  become: true
+- name: install dotnet repository
+  apt_repository:
+    repo: 'deb https://packages.microsoft.com/ubuntu/18.04/prod bionic main'
+    filename: 'dotnet'
+    state: present
+  become: true
+- name: install dotnet package
+  apt:
+    name: dotnet-sdk-2.1
+    state: present
+  become: true

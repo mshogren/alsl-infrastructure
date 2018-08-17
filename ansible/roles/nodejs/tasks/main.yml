@@ -1,27 +1,30 @@
 ---
-- apt: name={{ item }} state=present
+- name: install dependencies
+  apt: name={{ item }} state=present
   with_items:
   - build-essential
   - libssl-dev
   - python
-  become: yes
-- shell: "{{ item }}"
+  become: true
+- name: install node using nvm
+  shell: "{{ item }}"
   with_items:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
   - source ~/.nvm/nvm.sh && nvm install 8 && nvm alias default node
   args:
     executable: /bin/bash
-- blockinfile:
+- name: setup .profile in skel
+  blockinfile:
     path: /etc/skel/.profile
     block: |
       export NVM_DIR="~/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-  become: yes
-- blockinfile:
+      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  become: true
+- name: setup .basrc in skel
+  blockinfile:
     path: /etc/skel/.bashrc
     block: |
       export NVM_DIR="~/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  become: yes
-
+      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  become: true

@@ -6,8 +6,8 @@
   - adduser uiuser ubuntu
   args:
     executable: /bin/bash
-  become: yes
-#Todo: setup google authenticator
-#Todo: set xfce4-terminal settings
-#Todo: set xfwm settings
-#Todo: install vscode extensions
+  become: true
+# Todo: setup google authenticator
+# Todo: set xfce4-terminal settings
+# Todo: set xfwm settings
+# Todo: install vscode extensions

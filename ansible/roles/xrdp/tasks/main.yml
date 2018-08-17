@@ -11,5 +11,7 @@
     state: present
   become: true
 - name: set the default session maneger
-  alternatives: name=x-session-manager path=/usr/bin/startlxde
+  alternatives:
+    name: x-session-manager
+    path: /usr/bin/startlxde
   become: true

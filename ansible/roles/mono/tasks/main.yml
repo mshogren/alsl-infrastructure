@@ -1,9 +1,25 @@
 ---
-- apt_key: keyserver=keyserver.ubuntu.com id=3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF state=present
-  become: yes
-- apt_repository: repo='deb https://download.mono-project.com/repo/ubuntu stable-bionic main' filename='mono-official-stable' state=present
-  become: yes
-- apt: name=mono-complete state=present
-  become: yes
-
-
+- name: install dependencies
+  apt:
+    name:
+      - gnupg
+    state: present
+  become: true
+- name: import repository keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    state: present
+  become: true
+- name: install mono repository
+  apt_repository:
+    repo: 'deb https://download.mono-project.com/repo/ubuntu stable-bionic main'
+    filename: 'mono-official-stable'
+    state: present
+  become: true
+- name: install mono package
+  apt:
+    name:
+      - mono-complete
+    state: present
+  become: true

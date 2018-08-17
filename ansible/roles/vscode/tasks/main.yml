@@ -1,9 +1,18 @@
 ---
-- apt_key: url=https://packages.microsoft.com/keys/microsoft.asc state=present
-  become: yes
-- apt_repository: repo='deb https://packages.microsoft.com/repos/vscode stable main' filename='vscode' state=present
-  become: yes
-- apt: name=code state=present
-  become: yes
-
-
+- name: import repository key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  become: true
+- name: setup vscode repository
+  apt_repository:
+    repo: 'deb https://packages.microsoft.com/repos/vscode stable main'
+    filename: 'vscode'
+    state: present
+  become: true
+- name: install vscode package
+  apt:
+    name:
+      - code
+    state: present
+  become: true

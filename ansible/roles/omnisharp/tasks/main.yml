@@ -1,6 +1,19 @@
 ---
-- apt: name=libuv1-dev state=present
-  become: yes
-- file: path=~/omnisharp state=directory
-- shell:  curl https://api.github.com/repos/OmniSharp/omnisharp-roslyn/releases/latest -s | grep -hoP 'browser_download_url". "\K.*omnisharp\.http-linux-x64\.tar\.gz' | xargs -n1 curl -Ls | tar -xvz -C ~/omnisharp/
-
+- name: install dependencies
+  apt:
+    name:
+      - curl
+      - libuv1-dev
+    state: present
+  become: true
+- name: create directory
+  file:
+    path: ~/omnisharp
+    state: directory
+- name: install omnisharp
+  shell: curl https://api.github.com/repos/OmniSharp/omnisharp-roslyn/releases/latest -s | grep -hoP 'browser_download_url". "\K.*omnisharp\.http-linux-x64\.tar\.gz' | xargs -n1 curl -Ls | tar -xvz -C ~/omnisharp/
+  args:
+    creates: ~/omnisharp/omnisharp/OmniSharp.exe
+    warn: false
+  tags:
+    - skip_ansible_lint

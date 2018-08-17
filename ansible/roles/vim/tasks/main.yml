@@ -1,17 +1,41 @@
 ---
-- apt: name=vim-nox state=present
+- name: install vim package
+  apt:
+    name:
+      - vim-nox
+    state: present
   become: true
-- shell: update-alternatives --set editor /usr/bin/vim.nox
+- name: set default editor
+  alternatives:
+    name: editor
+    path: /usr/bin/vim.nox
   become: true
-- git: repo=http://github.com/mshogren/dotvim.git dest=~/.vim
-- file: path=~/.vim/undo state=directory
-- file: path=/etc/skel/.vim state=directory
+- name: get .vimrc from git
+  git:
+    repo: http://github.com/mshogren/dotvim.git
+    dest: ~/.vim
+    version: master
+- name: create undo dierctory
+  file:
+    path: ~/.vim/undo
+    state: directory
+- name: create .vim directory in skel
+  file:
+    path: /etc/skel/.vim
+    state: directory
   become: true
-- file: path=/etc/skel/.vim/undo state=directory
+- name: create undo directory in skel
+  file:
+    path: /etc/skel/.vim/undo
+    state: directory
   become: true
-- copy: src=~/.vim/vimrc dest=/etc/skel/.vim/vimrc
+- name: copy vimrc to skel
+  copy:
+    src: ~/.vim/vimrc
+    dest: /etc/skel/.vim/vimrc
   become: true
-- blockinfile:
+- name: create .editorconfig file
+  blockinfile:
     path: ~/.editorconfig
     create: true
     block: |
@@ -24,5 +48,8 @@
       charset = utf-8
       trim_trailing_whitespace = true
       insert_final_newline = true
-- copy: src=~/.editorconfig dest=/etc/skel/.editorconfig
+- name: copy .editorconfig to skel
+  copy:
+    src: ~/.editorconfig
+    dest: /etc/skel/.editorconfig
   become: true
