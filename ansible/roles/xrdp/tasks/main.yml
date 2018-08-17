@@ -1,12 +1,15 @@
 ---
-- apt: name={{ item }} state=present
-  with_items:
-  - lxde-core
-  - lxde-icon-theme
-  - xfce4-terminal
-  - fonts-inconsolata
-  - fonts-powerline
-  - xrdp
-  become: yes
-- alternatives: name=x-session-manager path=/usr/bin/startlxde
-  become: yes
+- name: install the packages
+  apt:
+    name:
+      - lxde-core
+      - lxde-icon-theme
+      - xfce4-terminal
+      - fonts-inconsolata
+      - fonts-powerline
+      - xrdp
+    state: present
+  become: true
+- name: set the default session maneger
+  alternatives: name=x-session-manager path=/usr/bin/startlxde
+  become: true
