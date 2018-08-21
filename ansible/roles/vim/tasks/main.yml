@@ -35,19 +35,9 @@
     dest: /etc/skel/.vim/vimrc
   become: true
 - name: create .editorconfig file
-  blockinfile:
-    path: ~/.editorconfig
-    create: true
-    block: |
-      root = true
-
-      [*]
-      indent_style = space
-      indent_size = 2
-      end_of_line = lf
-      charset = utf-8
-      trim_trailing_whitespace = true
-      insert_final_newline = true
+  template:
+    src: editorconfig.j2
+    dest: ~/.editorconfig
 - name: copy .editorconfig to skel
   copy:
     src: ~/.editorconfig
