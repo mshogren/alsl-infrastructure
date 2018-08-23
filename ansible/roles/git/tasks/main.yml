@@ -7,6 +7,10 @@
   become: true
 - name: configure git
   git_config:
-    name: 'credential.helper'
     scope: global
-    value: 'cache --timeout=604800'
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  with_items:
+    - {name: 'credential.helper', value: 'cache --timeout=604800'}
+    - {name: 'user.name', value: '{{ git.username }}'}
+    - {name: 'user.email', value: '{{ git.email }}'}
