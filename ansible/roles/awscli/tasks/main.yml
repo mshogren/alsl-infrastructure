@@ -2,6 +2,7 @@
 - name: install pip
   apt:
     name:
+      - python-setuptools
       - python3-pip
     state: present
   become: true

@@ -15,7 +15,7 @@
     repo: http://github.com/mshogren/dotvim.git
     dest: ~/.vim
     version: master
-- name: create undo dierctory
+- name: create undo directory
   file:
     path: ~/.vim/undo
     state: directory
@@ -33,6 +33,7 @@
   copy:
     src: ~/.vim/vimrc
     dest: /etc/skel/.vim/vimrc
+    remote_src: true
   become: true
 - name: create .editorconfig file
   template:
@@ -42,4 +43,5 @@
   copy:
     src: ~/.editorconfig
     dest: /etc/skel/.editorconfig
+    remote_src: true
   become: true
