@@ -1,6 +1,7 @@
 ---
 - hosts: all
   roles:
+  - env
   - awscli
   - inadyn
   - vim

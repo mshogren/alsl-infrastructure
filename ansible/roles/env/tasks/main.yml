@@ -1,0 +1,11 @@
+---
+- name: install packages
+  apt:
+    name:
+      - tzdata
+    state: present
+  become: true
+- name: configure timezone
+  timezone:
+    name: '{{ env.timezone }}'
+  become: true
