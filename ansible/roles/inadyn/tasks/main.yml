@@ -8,8 +8,8 @@
 - name: update the configuration
   lineinfile:
     path: /etc/inadyn.conf
-    regexp: "{{item.regexp}}"
-    line: "{{item.line}}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
   with_items:
     - {regexp: '^system', line: 'system {{ inadyn.system }}'}
     - {regexp: '^username', line: 'username {{ inadyn.username }}'}

@@ -15,7 +15,11 @@
     state: present
   become: true
 - name: set the aws region
-  shell: aws configure get region | grep -q {{ awsregion }} && echo -n SET || aws configure set region {{ awsregion }}
+  shell: |
+    set -o pipefail
+    aws configure get region | grep -q {{ awsregion }} && echo -n SET || aws configure set region {{ awsregion }}
+  args:
+    executable: /bin/bash
   register: region_state
   changed_when: region_state.stdout != 'SET'
 - name: ensure bash completion dir exists

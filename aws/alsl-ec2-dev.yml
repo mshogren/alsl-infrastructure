@@ -7,7 +7,7 @@
         return_content: true
       register: content
     - set_fact: awsregion="{{ content.json.region }}"
-    - set_fact: env="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/env', shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
-    - set_fact: inadyn="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/inadyn', shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
-    - set_fact: git="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/git', shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
+    - set_fact: env="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/env', region=awsregion, shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
+    - set_fact: inadyn="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/inadyn', region=awsregion,  shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
+    - set_fact: git="{{ lookup('aws_ssm', '/alsl-ec2-dev/roles/git',  region=awsregion, shortnames=true, bypath=true, recursive=true, decrypt=true) }}"
 - import_playbook: ../ansible/devenv.yml

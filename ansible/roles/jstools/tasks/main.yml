@@ -6,12 +6,12 @@
     executable: /bin/bash
 - name: install packages
   npm:
-    name: {{item}}
+    name: "{{ item }}"
     global: true
     state: present
-    executable: "{{node_path.stdout}}/npm"
+    executable: "{{ node_path.stdout }}/npm"
   with_items:
     - npm-check-updates
     - commitizen
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{node_path.stdout}}"
+    PATH: "{{ ansible_env.PATH }}:{{ node_path.stdout }}"
