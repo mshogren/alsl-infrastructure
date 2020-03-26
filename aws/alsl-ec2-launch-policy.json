@@ -50,7 +50,7 @@
                 "arn:aws:ec2:<region>:<accountid>:network-interface/*",
                 "arn:aws:ec2:<region>:<accountid>:vpc/*",
                 "arn:aws:ec2:<region>:<accountid>:subnet/*",
-                "arn:aws:ec2:<region>::image/ami-0a7d051a1c4b54f65"
+                "arn:aws:ec2:<region>::image/ami-0e23ea41be77feacd"
             ]
         },
         {
