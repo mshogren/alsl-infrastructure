@@ -19,7 +19,7 @@ rm tmp.json
 aws ec2 authorize-security-group-ingress --group-name alsl-ec2-dev-sg --protocol tcp --port 22 --cidr $IP/32
 
 USERDATA=$(base64 userdata.sh -w 0)
-QUERY="Images[0].{ImageId: ImageId, InstanceType: \`\"t3a.medium\"\`, Placement: { AvailabilityZone: \`\"us-west-2b\"\` }, KeyName: \`\"${USER}\"\`, SecurityGroups: [ \`\"alsl-ec2-dev-sg\"\` ], IamInstanceProfile: { Name: \`\"alsl-ec2-dev\"\` }, UserData: \`\"${USERDATA}\"\`, BlockDeviceMappings: BlockDeviceMappings[*] }"
+QUERY="Images[0].{ImageId: ImageId, InstanceType: \`\"t3a.medium\"\`, Placement: { AvailabilityZone: \`\"us-west-2a\"\` }, KeyName: \`\"${USER}\"\`, SecurityGroups: [ \`\"alsl-ec2-dev-sg\"\` ], IamInstanceProfile: { Name: \`\"alsl-ec2-dev\"\` }, UserData: \`\"${USERDATA}\"\`, BlockDeviceMappings: BlockDeviceMappings[*] }"
 
 aws ec2 describe-images --image-id ami-0e23ea41be77feacd --query "$QUERY" > launch.json
 

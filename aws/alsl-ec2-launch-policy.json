@@ -15,7 +15,9 @@
             "Sid": "AllowRequestSpotInstances",
             "Effect": "Allow",
             "Action": [
-                "ec2:RequestSpotInstances"
+                "ec2:RequestSpotInstances",
+		"ec2:StartInstances",
+		"ec2:StopInstances"
             ],
             "Resource": [
                 "*"
